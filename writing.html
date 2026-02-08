@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>TextLab — Тренажёр письма</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+  <script defer src="assets/app.js"></script>
+</head>
+<body>
+
+<header class="nav">
+  <div class="container">
+    <div class="row">
+      <a class="brand" href="index.html"><div class="logo"></div><div><b>TextLab 7–8</b><div class="small">Тренажёр письма</div></div></a>
+      <nav class="menu">
+        <a class="chip" href="grade7.html">7 класс</a>
+        <a class="chip" href="grade8.html">8 класс</a>
+        <a class="chip" href="ai.html">ИИ-помощник</a>
+        <a class="chip" href="writing.html">Тренажёр письма</a>
+        <a class="chip" href="checklists.html">Самооценка</a>
+        <a class="chip" href="bank.html">Банк текстов</a>
+        <a class="chip" href="teacher.html">Учителю</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <div class="card">
+    <h1 class="h1">Тренажёр письма</h1>
+    <p class="lead">Короткие форматы, которые удобно писать и проверять: абзац-аргумент, комментарий к цитате, вывод.</p>
+  </div>
+
+  <section class="section grid">
+    <div class="card">
+      <h2 class="title">1) Абзац-аргумент</h2>
+      <p class="muted"><b>Шаблон:</b> тезис → 2 доказательства → вывод (7–9 предложений).</p>
+      <div class="textbox">
+        <b>Тема:</b> Почему важно уметь слушать собеседника?<br>
+        <span class="small">Подсказка: приведи один пример из текста (если есть) и один — из жизни/учёбы.</span>
+      </div>
+      <textarea id="w1" placeholder="Пиши здесь..."></textarea>
+      <div class="btns">
+        <a class="btn secondary" href="ai.html">Проверить связность с ИИ</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 class="title">2) Комментарий к цитате</h2>
+      <div class="textbox">
+        <b>Цитата:</b> «Человек становится умнее, когда задаёт вопросы».<br>
+        <span class="small">Напиши 6–8 предложений: что это значит? согласен/не согласен? пример.</span>
+      </div>
+      <textarea id="w2" placeholder="Пиши здесь..."></textarea>
+    </div>
+
+    <div class="card">
+      <h2 class="title">3) Вывод по тексту</h2>
+      <div class="textbox">
+        <b>Задание:</b> Сформулируй вывод по любому прочитанному тексту (4–6 предложений).<br>
+        <span class="small">Вывод должен отвечать на вопрос: чему учит текст?</span>
+      </div>
+      <textarea id="w3" placeholder="Пиши здесь..."></textarea>
+    </div>
+  </section>
+
+  <script>
+    TextLab.hookDraft("w1","draft_w1");
+    TextLab.hookDraft("w2","draft_w2");
+    TextLab.hookDraft("w3","draft_w3");
+  </script>
+
+  <div class="footer">Тренажёр письма • TextLab 7–8</div>
+</main>
+</body>
+</html>
