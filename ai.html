@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>TextLab — ИИ-помощник</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+  <script defer src="assets/app.js"></script>
+</head>
+<body>
+
+<header class="nav">
+  <div class="container">
+    <div class="row">
+      <a class="brand" href="index.html">
+        <div class="logo"></div>
+        <div><b>TextLab 7–8</b><div class="small">ИИ-помощник</div></div>
+      </a>
+      <nav class="menu">
+        <a class="chip" href="grade7.html">7 класс</a>
+        <a class="chip" href="grade8.html">8 класс</a>
+        <a class="chip" href="ai.html">ИИ-помощник</a>
+        <a class="chip" href="writing.html">Тренажёр письма</a>
+        <a class="chip" href="checklists.html">Самооценка</a>
+        <a class="chip" href="bank.html">Банк текстов</a>
+        <a class="chip" href="teacher.html">Учителю</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <div class="card">
+    <h1 class="h1">ИИ-помощник «Подумай ещё»</h1>
+    <p class="lead">
+      ИИ не пишет за ученика. Он помогает: уточнить основную мысль, проверить тезис, найти доказательства в тексте,
+      улучшить связность и сделать формулировки точнее.
+    </p>
+
+    <div class="notice">
+      <b>Правило:</b> сначала ученик пишет сам, потом использует ИИ для улучшения.
+      Если ИИ дал готовый ответ — это нарушает смысл задания.
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="grid">
+      <div class="card">
+        <h2 class="title">Готовые запросы (кнопки)</h2>
+        <p class="muted">Нажми кнопку → запрос появится в поле → скопируй и вставь в чат бота.</p>
+        <div class="btns">
+          <button class="btn secondary" data-prompt="Найди тему и основную мысль текста. Не пиши готовый ответ за меня — задай 3 вопроса, чтобы я сам(а) сформулировал(а) мысль.">Тема/мысль</button>
+          <button class="btn secondary" data-prompt="Проверь мой тезис: понятен ли он? Предложи 2 варианта улучшения (короче и точнее), без готового сочинения.">Проверить тезис</button>
+          <button class="btn secondary" data-prompt="Где в тексте мои доказательства слабые? Подскажи, какие фразы из текста лучше использовать как аргументы.">Доказательства</button>
+          <button class="btn secondary" data-prompt="Сделай мой текст более связным: предложи 6–8 слов-связок и укажи, куда их можно вставить.">Связность</button>
+          <button class="btn secondary" data-prompt="Найди орфографические и пунктуационные ошибки в моём тексте. Объясни правило кратко и покажи исправленный вариант.">Ошибки</button>
+        </div>
+
+        <div class="hr"></div>
+        <textarea id="promptBox" placeholder="Здесь появится текст запроса..."></textarea>
+        <div class="btns">
+          <button class="btn" id="copyBtn">Скопировать запрос</button>
+        </div>
+        <p class="small">Подсказка: сначала вставь свой текст/ответ, затем вставь запрос сверху.</p>
+      </div>
+
+      <div class="card">
+        <h2 class="title">Чат-бот (Elfsight)</h2>
+        <p class="muted">Бот встроен прямо на страницу. Если не появляется — проверь, что сайт открыт по HTTPS (GitHub Pages) и нет блокировщиков.</p>
+
+        <!-- Elfsight AI Chatbot | Untitled AI Chatbot -->
+        <script src="https://elfsightcdn.com/platform.js" async></script>
+        <div class="elfsight-app-212fcadb-97f4-4859-94f9-2b13d10252e3" data-elfsight-app-lazy></div>
+
+        <div class="hr"></div>
+        <div class="notice">
+          <b>Если бот не загрузился:</b><br>
+          1) обнови страницу (Ctrl/Cmd + R)<br>
+          2) отключи AdBlock на сайте<br>
+          3) проверь, что в GitHub Pages включён HTTPS
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const box = document.getElementById("promptBox");
+    document.querySelectorAll("[data-prompt]").forEach(btn=>{
+      btn.addEventListener("click", ()=>{
+        box.value = btn.getAttribute("data-prompt");
+        box.focus();
+      });
+    });
+
+    document.getElementById("copyBtn").addEventListener("click", async ()=>{
+      try{
+        await navigator.clipboard.writeText(box.value || "");
+        alert("Скопировано!");
+      }catch(e){
+        alert("Не получилось скопировать. Выдели текст и скопируй вручную.");
+      }
+    });
+  </script>
+
+  <div class="footer">ИИ-помощник • TextLab 7–8</div>
+</main>
+</body>
+</html>
