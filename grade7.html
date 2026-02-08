@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>TextLab 7 класс</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+  <script defer src="assets/app.js"></script>
+</head>
+<body>
+
+<header class="nav">
+  <div class="container">
+    <div class="row">
+      <a class="brand" href="index.html"><div class="logo"></div><div><b>TextLab 7–8</b><div class="small">7 класс</div></div></a>
+      <nav class="menu">
+        <a class="chip" href="grade7.html">7 класс</a>
+        <a class="chip" href="grade8.html">8 класс</a>
+        <a class="chip" href="ai.html">ИИ-помощник</a>
+        <a class="chip" href="writing.html">Тренажёр письма</a>
+        <a class="chip" href="checklists.html">Самооценка</a>
+        <a class="chip" href="bank.html">Банк текстов</a>
+        <a class="chip" href="teacher.html">Учителю</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <div class="card">
+    <h1 class="h1">7 класс: читаем и пишем коротко, но смыслово</h1>
+    <p class="lead">Уроки построены по шаблону: текст → задания (3 уровня) → мини-ответ (6–8 предложений) → самопроверка.</p>
+  </div>
+
+  <section class="section">
+    <div class="lesson card">
+      <h3>Урок 1. Тема и основная мысль</h3>
+      <div class="textbox">
+        <b>Текст</b><br><br>
+        В нашем дворе стоит старое дерево. Зимой оно кажется строгим и молчаливым, будто хранит чью-то тайну.
+        Но весной ветви оживают: появляется тонкая зелень, прилетают птицы, и двор меняется.
+        Однажды после сильного ветра мы заметили, что у дерева сломалась большая ветка.
+        Сосед хотел спилить дерево, чтобы «не мешало», но многие возразили: дерево даёт тень, в нём живут птицы,
+        а ещё оно напоминает о детстве. Мы вместе убрали сломанную ветку и решили ухаживать за деревом.
+      </div>
+
+      <div class="tagrow">
+        <span class="badge">Базовый</span><span class="badge">Средний</span><span class="badge">Высокий</span>
+      </div>
+
+      <ol class="qs">
+        <li><b>(Базовый)</b> Сформулируй тему текста одним словосочетанием.</li>
+        <li><b>(Базовый)</b> Найди 2 предложения, которые описывают изменения весной.</li>
+        <li><b>(Средний)</b> Почему часть жильцов была против того, чтобы спилить дерево? Укажи 2 причины из текста.</li>
+        <li><b>(Средний)</b> Какое настроение создаёт автор в начале? Подтверди строкой из текста.</li>
+        <li><b>(Высокий)</b> Сформулируй основную мысль (1–2 предложения).</li>
+        <li><b>(Высокий)</b> Что важнее: удобство или память/ценность? Ответ объясни на примере из текста.</li>
+      </ol>
+
+      <p class="small"><b>Мини-ответ (6–8 предложений):</b> Напиши, почему дерево оказалось важным для двора и что показывает эта история.</p>
+      <textarea id="g7_l1" placeholder="Пиши здесь..."></textarea>
+
+      <div class="btns">
+        <a class="btn secondary" href="ai.html">Спросить у ИИ-помощника</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="lesson card">
+      <h3>Урок 2. Микротемы и абзацы</h3>
+      <div class="textbox">
+        <b>Текст</b><br><br>
+        Сначала мы спорили почти из-за всего: кто будет отвечать, как оформлять, какие примеры приводить.
+        Потом учитель предложил правило: каждый говорит по очереди и обязательно объясняет, почему так думает.
+        Споры не исчезли, но стали полезными — мы начали слушать, задавать вопросы, уточнять.
+        К концу работы у нас появился общий план, а в нём — место для идей каждого.
+      </div>
+
+      <ol class="qs">
+        <li><b>(Базовый)</b> Раздели текст на 3 микротемы и подпиши каждую 2–3 словами.</li>
+        <li><b>(Средний)</b> Найди «поворотный момент»: с какого предложения ситуация начала меняться?</li>
+        <li><b>(Средний)</b> Какое правило предложил учитель и зачем оно нужно?</li>
+        <li><b>(Высокий)</b> Сформулируй вывод: чему учит эта история о работе в группе?</li>
+      </ol>
+
+      <p class="small"><b>Мини-ответ:</b> Напиши один абзац (7–9 предложений): «Как спор может стать полезным?»</p>
+      <textarea id="g7_l2" placeholder="Пиши здесь..."></textarea>
+      <div class="btns">
+        <a class="btn secondary" href="checklists.html">Самопроверка чек-листом</a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    TextLab.hookDraft("g7_l1","draft_g7_l1");
+    TextLab.hookDraft("g7_l2","draft_g7_l2");
+  </script>
+
+  <div class="footer">7 класс • TextLab 7–8</div>
+</main>
+</body>
+</html>
