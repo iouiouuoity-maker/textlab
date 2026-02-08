@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>TextLab — Самооценка</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+  <script defer src="assets/app.js"></script>
+</head>
+<body>
+
+<header class="nav">
+  <div class="container">
+    <div class="row">
+      <a class="brand" href="index.html"><div class="logo"></div><div><b>TextLab 7–8</b><div class="small">Самооценка</div></div></a>
+      <nav class="menu">
+        <a class="chip" href="grade7.html">7 класс</a>
+        <a class="chip" href="grade8.html">8 класс</a>
+        <a class="chip" href="ai.html">ИИ-помощник</a>
+        <a class="chip" href="writing.html">Тренажёр письма</a>
+        <a class="chip" href="checklists.html">Самооценка</a>
+        <a class="chip" href="bank.html">Банк текстов</a>
+        <a class="chip" href="teacher.html">Учителю</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <div class="card">
+    <h1 class="h1">Чек-листы</h1>
+    <p class="lead">Отметь пункты — и посмотри, насколько ответ готов. Это ускоряет проверку и учит редактировать себя.</p>
+  </div>
+
+  <section class="section grid">
+    <div class="card" id="cl_read">
+      <h2 class="title">Читательская грамотность</h2>
+      <label><input type="checkbox"> Я понял(а) тему текста.</label><br>
+      <label><input type="checkbox"> Я могу сказать основную мысль своими словами.</label><br>
+      <label><input type="checkbox"> Я нашёл(ла) ключевые слова/фразы в тексте.</label><br>
+      <label><input type="checkbox"> Я отличаю факт от мнения (если нужно).</label><br>
+      <label><input type="checkbox"> Я могу привести 2 доказательства из текста.</label><br>
+      <div class="btns">
+        <button class="btn" data-score-btn>Подсчитать</button>
+      </div>
+      <div class="small" data-score-out></div>
+    </div>
+
+    <div class="card" id="cl_write">
+      <h2 class="title">Письменная грамотность</h2>
+      <label><input type="checkbox"> У меня есть тезис (главная мысль ответа).</label><br>
+      <label><input type="checkbox"> Есть 2 доказательства/примера.</label><br>
+      <label><input type="checkbox"> Есть вывод.</label><br>
+      <label><input type="checkbox"> Предложения связаны словами-связками.</label><br>
+      <label><input type="checkbox"> Я проверил(а) орфографию и пунктуацию.</label><br>
+      <div class="btns">
+        <button class="btn" data-score-btn>Подсчитать</button>
+      </div>
+      <div class="small" data-score-out></div>
+    </div>
+
+    <div class="card">
+      <h2 class="title">Мини-рубрика (для учителя)</h2>
+      <div class="textbox">
+        <b>4 критерия по 0–2 балла:</b><br>
+        1) Понимание текста<br>
+        2) Аргументация (доказательства)<br>
+        3) Связность и логика<br>
+        4) Грамотность (орфография/пунктуация)<br>
+      </div>
+      <p class="muted">Можно ставить быстро и прозрачно: максимум 8 баллов.</p>
+    </div>
+  </section>
+
+  <script>
+    TextLab.simpleChecklistScore("cl_read");
+    TextLab.simpleChecklistScore("cl_write");
+  </script>
+
+  <div class="footer">Самооценка • TextLab 7–8</div>
+</main>
+</body>
+</html>
