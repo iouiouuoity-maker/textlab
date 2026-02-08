@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>TextLab — Банк текстов</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+  <script defer src="assets/app.js"></script>
+</head>
+<body>
+
+<header class="nav">
+  <div class="container">
+    <div class="row">
+      <a class="brand" href="index.html"><div class="logo"></div><div><b>TextLab 7–8</b><div class="small">Банк текстов</div></div></a>
+      <nav class="menu">
+        <a class="chip" href="grade7.html">7 класс</a>
+        <a class="chip" href="grade8.html">8 класс</a>
+        <a class="chip" href="ai.html">ИИ-помощник</a>
+        <a class="chip" href="writing.html">Тренажёр письма</a>
+        <a class="chip" href="checklists.html">Самооценка</a>
+        <a class="chip" href="bank.html">Банк текстов</a>
+        <a class="chip" href="teacher.html">Учителю</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <div class="card">
+    <h1 class="h1">Банк текстов (по уровню)</h1>
+    <p class="lead">Можно расширять. Сейчас — стартовый набор для 7–8 классов.</p>
+
+    <div class="btns">
+      <select id="filter">
+        <option value="all">Показать все</option>
+        <option value="g7">Только 7 класс</option>
+        <option value="g8">Только 8 класс</option>
+      </select>
+      <input id="search" placeholder="Поиск по названию..." />
+    </div>
+  </div>
+
+  <section class="section" id="list">
+    <div class="card" data-grade="g7" data-title="Дерево во дворе">
+      <h3 class="title">7 класс • «Дерево во дворе»</h3>
+      <p class="muted">Тема/мысль, настроение, доказательства из текста.</p>
+      <div class="btns"><a class="btn secondary" href="grade7.html">Открыть урок</a></div>
+    </div>
+
+    <div class="card" data-grade="g7" data-title="Полезный спор">
+      <h3 class="title">7 класс • «Полезный спор»</h3>
+      <p class="muted">Микротемы, абзацы, вывод.</p>
+      <div class="btns"><a class="btn secondary" href="grade7.html">Открыть урок</a></div>
+    </div>
+
+    <div class="card" data-grade="g8" data-title="Почему важно читать">
+      <h3 class="title">8 класс • «Почему важно читать»</h3>
+      <p class="muted">Факт/мнение, позиция автора, аргументация.</p>
+      <div class="btns"><a class="btn secondary" href="grade8.html">Открыть урок</a></div>
+    </div>
+
+    <div class="card" data-grade="g8" data-title="Редактирование черновика">
+      <h3 class="title">8 класс • «Редактирование черновика»</h3>
+      <p class="muted">Орфография/пунктуация, логика, убедительность.</p>
+      <div class="btns"><a class="btn secondary" href="grade8.html">Открыть урок</a></div>
+    </div>
+  </section>
+
+  <script>
+    const filter = document.getElementById("filter");
+    const search = document.getElementById("search");
+    const cards = [...document.querySelectorAll("#list .card")];
+
+    function apply(){
+      const f = filter.value;
+      const q = (search.value||"").toLowerCase().trim();
+
+      cards.forEach(c=>{
+        const grade = c.dataset.grade;
+        const title = (c.dataset.title||"").toLowerCase();
+        const okGrade = (f==="all") || (grade===f);
+        const okText = (!q) || title.includes(q);
+        c.style.display = (okGrade && okText) ? "" : "none";
+      });
+    }
+    filter.addEventListener("change", apply);
+    search.addEventListener("input", apply);
+  </script>
+
+  <div class="footer">Банк текстов • TextLab 7–8</div>
+</main>
+</body>
+</html>
