@@ -11,7 +11,6 @@
 
 <script>
 const TEACHER_CODE = "textlab-teacher";
-
 if(localStorage.getItem("textlab_access") !== "ok"){
   const pass = prompt("Введите код доступа учителя:");
   if(pass !== TEACHER_CODE){
@@ -42,19 +41,31 @@ if(localStorage.getItem("textlab_access") !== "ok"){
 <main class="container">
   <div class="card">
     <h1 class="h1">Результаты учащихся</h1>
-    <p class="lead">
-      Письменные работы учеников с возможностью оценки и педагогической рефлексии.
-    </p>
+    <p class="lead">Работы, оценивание и рефлексия учителя.</p>
+    <div class="btns">
+      <button class="btn secondary" onclick="logout()">Выйти</button>
+      <button class="btn secondary" onclick="clearAll()">Очистить все работы</button>
+    </div>
+    <p class="small">Пароль учителя: <kbd>textlab-teacher</kbd></p>
   </div>
 
   <section id="list" class="section"></section>
 
-  <div class="footer">
-    TextLab • аналитическая панель учителя
-  </div>
+  <div class="footer">TextLab • Панель учителя</div>
 </main>
 
 <script>
+function logout(){
+  localStorage.removeItem("textlab_access");
+  location.href="index.html";
+}
+function clearAll(){
+  if(confirm("Удалить все сохранённые работы?")){
+    localStorage.removeItem("textlab_results");
+    renderResults();
+  }
+}
+
 function renderResults(){
   const root = document.getElementById("list");
   const data = JSON.parse(localStorage.getItem("textlab_results") || "[]");
@@ -74,17 +85,18 @@ function renderResults(){
       <div class="grid">
         <div>
           <label><b>Оценка (0–8 баллов)</b></label>
-          <input value="${item.score}"
-            onchange="update('${item.id}','score',this.value)" />
-          <p class="small">Понимание • аргументация • логика • грамотность</p>
+          <input value="${item.score}" onchange="update('${item.id}','score',this.value)" />
+          <p class="small">Критерии: понимание • аргументация • логика • грамотность</p>
         </div>
 
         <div>
           <label><b>Рефлексия учителя</b></label>
-          <textarea onchange="update('${item.id}','reflection',this.value)">
-${item.reflection || ""}
-          </textarea>
+          <textarea onchange="update('${item.id}','reflection',this.value)">${item.reflection || ""}</textarea>
         </div>
+      </div>
+
+      <div class="btns">
+        <button class="btn secondary" onclick="removeOne('${item.id}')">Удалить эту работу</button>
       </div>
     </div>
   `).join("");
@@ -97,6 +109,12 @@ function update(id, field, value){
     item[field] = value;
     localStorage.setItem("textlab_results", JSON.stringify(data));
   }
+}
+function removeOne(id){
+  const data = JSON.parse(localStorage.getItem("textlab_results") || "[]");
+  const next = data.filter(x => x.id != id);
+  localStorage.setItem("textlab_results", JSON.stringify(next));
+  renderResults();
 }
 
 renderResults();
