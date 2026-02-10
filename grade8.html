@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>TextLab 8 класс</title>
+  <title>TextLab — 8 класс</title>
   <link rel="stylesheet" href="assets/styles.css" />
   <script defer src="assets/app.js"></script>
 </head>
@@ -12,7 +12,7 @@
 <header class="nav">
   <div class="container">
     <div class="row">
-      <a class="brand" href="index.html"><div class="logo"></div><div><b>TextLab 7–8</b><div class="small">8 класс</div></div></a>
+      <a class="brand" href="index.html"><div class="logo"></div><div><b>TextLab</b><div class="small">8 класс</div></div></a>
       <nav class="menu">
         <a class="chip" href="grade7.html">7 класс</a>
         <a class="chip" href="grade8.html">8 класс</a>
@@ -20,7 +20,8 @@
         <a class="chip" href="writing.html">Тренажёр письма</a>
         <a class="chip" href="checklists.html">Самооценка</a>
         <a class="chip" href="bank.html">Банк текстов</a>
-        <a class="chip" href="teacher.html">Учителю</a>
+        <a class="chip" href="results.html">Учителю</a>
+        <a class="chip" href="teacher.html">Методика</a>
       </nav>
     </div>
   </div>
@@ -29,7 +30,7 @@
 <main class="container">
   <div class="card">
     <h1 class="h1">8 класс: аргументация и редактирование</h1>
-    <p class="lead">Здесь главное: тезис → доказательства из текста → вывод. И учимся отличать факт от мнения.</p>
+    <p class="lead">Тезис → доказательства → вывод. + грамотное редактирование.</p>
   </div>
 
   <section class="section">
@@ -39,25 +40,25 @@
       <div class="textbox">
         <b>Текст</b><br><br>
         Многие подростки считают, что чтение «не нужно», потому что информацию проще найти в интернете.
-        Однако текст — это не только сведения. Чтение тренирует внимание и умение удерживать мысль, а это важно в любой учебной работе.
-        Конечно, фильмы и короткие видео удобны, но они часто дают готовую картинку и меньше заставляют анализировать.
+        Однако текст — это не только сведения. Чтение тренирует внимание и умение удерживать мысль.
+        Конечно, короткие видео удобны, но они часто дают готовую картинку и меньше заставляют анализировать.
         Когда человек читает, он «достраивает» смысл: задаёт вопросы, сравнивает, делает выводы.
         Поэтому привычка читать хотя бы понемногу помогает учиться быстрее и понимать глубже.
       </div>
 
       <ol class="qs">
-        <li><b>(Базовый)</b> Выпиши 2 факта (или факто-похожие утверждения) и 2 мнения/оценки.</li>
+        <li><b>(Базовый)</b> Выпиши 2 факта/утверждения и 2 мнения/оценки.</li>
         <li><b>(Средний)</b> Сформулируй позицию автора одним предложением.</li>
-        <li><b>(Средний)</b> Найди 2 аргумента автора и укажи, где они в тексте.</li>
-        <li><b>(Высокий)</b> Согласен ли ты с автором? Напиши тезис и 2 доказательства (одно — из текста, второе — из жизни/учёбы).</li>
+        <li><b>(Высокий)</b> Напиши тезис и 2 доказательства (одно — из текста, второе — из жизни/учёбы).</li>
       </ol>
 
       <p class="small"><b>Мини-ответ (8–10 предложений):</b> «Почему чтение развивает мышление?»</p>
       <textarea id="g8_l1" placeholder="Пиши здесь..."></textarea>
 
       <div class="btns">
-        <a class="btn secondary" href="ai.html">Проверить логику с ИИ</a>
-        <a class="btn secondary" href="checklists.html">Чек-лист аргументации</a>
+        <button class="btn" onclick="sendToTeacher('8 класс','Урок 1: Факт и мнение','g8_l1')">Отправить учителю</button>
+        <a class="btn secondary" href="ai.html">Проверить с ИИ</a>
+        <a class="btn secondary" href="checklists.html">Чек-лист</a>
       </div>
     </div>
   </section>
@@ -74,14 +75,15 @@
 
       <ol class="qs">
         <li><b>(Базовый)</b> Исправь орфографические и пунктуационные ошибки.</li>
-        <li><b>(Средний)</b> Раздели на абзацы: где тезис, где объяснение, где проблема.</li>
-        <li><b>(Высокий)</b> Перепиши так, чтобы текст стал убедительным: добавь 1 конкретный пример и 1 вывод.</li>
+        <li><b>(Средний)</b> Раздели на абзацы: тезис, объяснение, проблема/вывод.</li>
+        <li><b>(Высокий)</b> Перепиши убедительно: добавь 1 пример и 1 вывод.</li>
       </ol>
 
-      <p class="small"><b>Отредактированный вариант:</b></p>
-      <textarea id="g8_l2" placeholder="Пиши здесь..."></textarea>
+      <textarea id="g8_l2" placeholder="Пиши отредактированный вариант..."></textarea>
+
       <div class="btns">
-        <a class="btn secondary" href="ai.html">Попросить подсказку по редактированию</a>
+        <button class="btn" onclick="sendToTeacher('8 класс','Урок 2: Редактирование','g8_l2')">Отправить учителю</button>
+        <a class="btn secondary" href="ai.html">Подсказка ИИ</a>
       </div>
     </div>
   </section>
@@ -91,7 +93,7 @@
     TextLab.hookDraft("g8_l2","draft_g8_l2");
   </script>
 
-  <div class="footer">8 класс • TextLab 7–8</div>
+  <div class="footer">TextLab • 8 класс</div>
 </main>
 </body>
 </html>
