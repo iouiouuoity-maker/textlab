@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>TextLab — Панель учителя</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+  <script defer src="assets/app.js"></script>
+</head>
+<body>
+
+<script>
+const TEACHER_CODE = "textlab-teacher";
+
+if(localStorage.getItem("textlab_access") !== "ok"){
+  const pass = prompt("Введите код доступа учителя:");
+  if(pass !== TEACHER_CODE){
+    alert("Доступ запрещён");
+    location.href = "index.html";
+  } else {
+    localStorage.setItem("textlab_access","ok");
+  }
+}
+</script>
+
+<header class="nav">
+  <div class="container">
+    <div class="row">
+      <a class="brand" href="index.html">
+        <div class="logo"></div>
+        <div><b>TextLab</b><div class="small">Панель учителя</div></div>
+      </a>
+      <nav class="menu">
+        <a class="chip" href="index.html">Главная</a>
+        <a class="chip" href="results.html">Результаты</a>
+        <a class="chip" href="teacher.html">Методика</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <div class="card">
+    <h1 class="h1">Результаты учащихся</h1>
+    <p class="lead">
+      Письменные работы учеников с возможностью оценки и педагогической рефлексии.
+    </p>
+  </div>
+
+  <section id="list" class="section"></section>
+
+  <div class="footer">
+    TextLab • аналитическая панель учителя
+  </div>
+</main>
+
+<script>
+function renderResults(){
+  const root = document.getElementById("list");
+  const data = JSON.parse(localStorage.getItem("textlab_results") || "[]");
+
+  if(data.length === 0){
+    root.innerHTML = `<div class="card">Работ пока нет.</div>`;
+    return;
+  }
+
+  root.innerHTML = data.map(item => `
+    <div class="card">
+      <h3 class="title">${item.grade} • ${item.topic}</h3>
+      <p class="small">${item.date}</p>
+
+      <div class="textbox">${item.text.replace(/\n/g,"<br>")}</div>
+
+      <div class="grid">
+        <div>
+          <label><b>Оценка (0–8 баллов)</b></label>
+          <input value="${item.score}"
+            onchange="update('${item.id}','score',this.value)" />
+          <p class="small">Понимание • аргументация • логика • грамотность</p>
+        </div>
+
+        <div>
+          <label><b>Рефлексия учителя</b></label>
+          <textarea onchange="update('${item.id}','reflection',this.value)">
+${item.reflection || ""}
+          </textarea>
+        </div>
+      </div>
+    </div>
+  `).join("");
+}
+
+function update(id, field, value){
+  const data = JSON.parse(localStorage.getItem("textlab_results") || "[]");
+  const item = data.find(x => x.id == id);
+  if(item){
+    item[field] = value;
+    localStorage.setItem("textlab_results", JSON.stringify(data));
+  }
+}
+
+renderResults();
+</script>
+
+</body>
+</html>
